@@ -4,7 +4,7 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-qPCR is a package designed to wrangle and analyze raw, excel qPCR data output from QuantStudio Applied Biosystems instruments
+qPCR is a package designed for wrangling and analyzing raw excel qPCR data output from QuantStudio Applied Biosystems instruments
 
 ## Installation
 
