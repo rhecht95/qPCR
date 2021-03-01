@@ -6,6 +6,15 @@
 \usage{
 tidy_qPCR(df_raw, group_size, ref_tgt, exp_tgt)
 }
+\arguments{
+\item{df_raw}{raw excel output from QuantStudio instrument}
+
+\item{group_size}{numeric: number of rows that have a common target gene}
+
+\item{ref_tgt}{character: name identifier of housekeeping/reference gene}
+
+\item{exp_tgt}{character: name identifier of experimental target gene}
+}
 \value{
 data frame
 }

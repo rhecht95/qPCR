@@ -19,8 +19,10 @@ install.packages("qPCR")
 ``` r
 library(qPCR)
 
-raw_df <- load_raw()
-tidy_df <- tidy_qPCR(raw_df)
-dCt <- dCt(tidy_df) 
+qPCR_df <- load_raw() %>% 
+  tidy_qPCR() %>% 
+  dCt() %>% 
+  ddCt()
+
 ```
 

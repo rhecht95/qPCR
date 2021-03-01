@@ -2,18 +2,19 @@
 
 #' Delta Ct calculation
 #'
-#' Subtracts Ct of housekeeping gene from Ct of experimental target and returns values as a vector
+#' Subtracts Ct of housekeeping gene from Ct of experimental target and returns values as a new column to input data frame
 #'
-#' @return vector
+#' @return data frame
 #' @import tidyverse
-#' @param dataframe
+#' @param df dataframe: most often the output from tidy_qPCR
+#' @param group_size numeric: number of rows that have a common target gene
 #'
 #' @examples
 #' delta_Ct_values <- dCt(df)
 #'
 #' @export
 
-dct <- function(df) {
+dCt <- function(df, group_size) {
 
   #identify indices where target_class == "house"
   house_index <- which(df$target_class %in% "house")
@@ -35,9 +36,13 @@ dct <- function(df) {
     dplyr::pull(ct_mean)
 
   #vector with values representing delta Ct for each target/housekeeping pair
-  dCt <- avg_ct_exp - avg_ct_house
+  dct <- avg_ct_exp - avg_ct_house
 
-  return(dCt)
+  df <- df %>%
+    dplyr::mutate(d_Ct = rep(dct, each = group_size)) %>%
+    dplyr::relocate(11, .after = "ct_mean")
+
+  df
 }
 
 
