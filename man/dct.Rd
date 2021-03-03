@@ -18,6 +18,6 @@ data frame
 Subtracts Ct of housekeeping gene from Ct of experimental target and returns values as a new column to input data frame
 }
 \examples{
-delta_Ct_values <- dCt(df)
+qPCR_df <- dCt(df)
 
 }

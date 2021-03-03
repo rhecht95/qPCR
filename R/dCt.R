@@ -10,7 +10,7 @@
 #' @param group_size numeric: number of rows that have a common target gene
 #'
 #' @examples
-#' delta_Ct_values <- dCt(df)
+#' qPCR_df <- dCt(df)
 #'
 #' @export
 
@@ -40,7 +40,7 @@ dCt <- function(df, group_size) {
 
   df <- df %>%
     dplyr::mutate(d_Ct = rep(dct, each = group_size)) %>%
-    dplyr::relocate(11, .after = "ct_mean")
+    dplyr::relocate(11, .after = 6)
 
   df
 }
