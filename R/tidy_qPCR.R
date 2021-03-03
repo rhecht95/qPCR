@@ -8,6 +8,10 @@
 #' @importFrom janitor clean_names
 #' @importFrom magrittr "%>%"
 #' @import tidyverse
+#' @param df_raw raw excel output from QuantStudio instrument
+#' @param group_size numeric: number of rows that have a common target gene
+#' @param ref_tgt character: name identifier of housekeeping/reference gene
+#' @param exp_tgt character: name identifier of experimental target gene
 #'
 #' @examples
 #' tidy_df <- tidy_qPCR()
