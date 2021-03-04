@@ -3,6 +3,7 @@
 export(dCt)
 export(ddCt)
 export(load_raw)
+export(nrmlzd_expr)
 export(tidy_qPCR)
 import(tidyverse)
 importFrom(here,here)
