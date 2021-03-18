@@ -23,7 +23,7 @@ dCt <- function(df, group_size) {
     dplyr::slice(house_index) %>%
     dplyr::group_by(group_index) %>%
     dplyr::slice(1) %>%
-    dplyr::pull(ct_mean)
+    dplyr::pull(cq_mean)
 
 
   #identify indices where target_class == "exp"
@@ -33,7 +33,7 @@ dCt <- function(df, group_size) {
     dplyr::slice(exp_index) %>%
     dplyr::group_by(group_index) %>%
     dplyr::slice(1) %>%
-    dplyr::pull(ct_mean)
+    dplyr::pull(cq_mean)
 
   #vector with values representing delta Ct for each target/housekeeping pair
   dct <- avg_ct_exp - avg_ct_house
