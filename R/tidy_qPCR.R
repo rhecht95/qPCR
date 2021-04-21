@@ -21,11 +21,11 @@ tidy_qPCR <- function(df_raw, group_size, ref_tgt, exp_tgt) {
 
 tidy_df <- df_raw %>%
     janitor::clean_names() %>%
-    dplyr::select(well, well_position, sample_name, target_name, ct, ct_mean, ct_sd, ct_threshold) %>%
+    dplyr::select(well, well_position, omit, sample, target, cq, cq_mean, cq_sd, threshold) %>%
     dplyr::mutate(group_index = rep(1:ceiling(nrow(df_raw)%/%group_size), each = group_size),
            target_class = dplyr::case_when(
-             stringr::str_detect(target_name, ref_tgt) ~ "house",
-             stringr::str_detect(target_name, exp_tgt) ~ "exp"),
+             stringr::str_detect(target, ref_tgt) ~ "house",
+             stringr::str_detect(target, exp_tgt) ~ "exp"),
            target_class = as.factor(target_class))
 
 tidy_df

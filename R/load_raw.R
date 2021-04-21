@@ -15,7 +15,7 @@
 load_raw <- function(path, sheet, cell_range) {
 
   df_raw <- read_excel(path = here(path), sheet = sheet, range = cell_range)
-  df_raw$CT <- as.numeric(as.character(df_raw$CT))
+  df_raw$Cq <- as.numeric(as.character(df_raw$Cq))
 
   df_raw
 }
