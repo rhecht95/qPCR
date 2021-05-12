@@ -20,13 +20,13 @@ ddCt <- function(df, cntrl_cond) {
 
 #substracts dCt values of control condition from dCt values in experimental conditions
 
-  dd_Ct <- df %>%
+  ddct <- df %>%
       dplyr::filter(stringr::str_detect(df$sample, "-RT|- RT") == FALSE)
-  dd_Ct <- dd_Ct %>%
+  ddct <- ddct %>%
       dplyr::group_by(sample) %>%
-      dplyr::mutate(dd_Ct = d_Ct - d_Ct[dd_Ct$sample == cntrl_cond])
+      dplyr::mutate(dd_Ct = d_Ct - ddct$d_Ct[ddct$sample == cntrl_cond])
 
-  dd_Ct
+  ddct
 
 
 
