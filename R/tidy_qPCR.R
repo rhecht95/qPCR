@@ -26,7 +26,10 @@ tidy_df <- df_raw %>%
            target_class = dplyr::case_when(
              stringr::str_detect(target, ref_tgt) ~ "house",
              stringr::str_detect(target, exp_tgt) ~ "exp"),
-           target_class = as.factor(target_class))
+           target_class = as.factor(target_class)) %>%
+    dplyr::group_by(sample, target) %>%
+    dplyr::mutate(cq_mean = mean(cq, na.rm = T)) %>%
+    dplyr::ungroup()
 
 tidy_df
 
