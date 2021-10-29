@@ -45,4 +45,3 @@ dCt <- function(df, group_size) {
   df
 }
 
-
