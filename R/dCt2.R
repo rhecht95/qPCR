@@ -23,19 +23,21 @@ dCt2 <- function(df, endog_cntrl, cntrl_num = 1, excld_cntrl) {
   #when averaging multiple endogenous controls
   if(cntrl_num > 1) {
     norm_df <- df %>%
-      group_by(sample) %>%
-      mutate(endog_cntrl_mean = mean(cq_mean[target == endog_cntrl])) %>%
-      mutate(d_Ct = cq_mean - endog_cntrl_mean) %>%
-      filter(target_class == "exp")
+      dplyr::group_by(sample) %>%
+      dplyr::mutate(endog_cntrl_mean = mean(cq_mean[target == endog_cntrl])) %>%
+      dplyr::mutate(d_Ct = cq_mean - endog_cntrl_mean) %>%
+      dplyr::filter(target_class == "exp") %>%
+      dplyr::ungroup()
 
   }
   #only one endogenous control
   else if(cntrl_num == 1) {
     norm_df <- df %>%
-      filter(target != excld_cntrl) %>%
-      group_by(sample) %>%
-      mutate(d_Ct = cq_mean - cq_mean[target == endog_cntrl]) %>%
-      filter(target_class == "exp")
+      dplyr::filter(target != excld_cntrl) %>%
+      dplyr::group_by(sample) %>%
+      dplyr::mutate(d_Ct = cq_mean - cq_mean[target == endog_cntrl]) %>%
+      dplyr::filter(target_class == "exp") %>%
+      dplyr::ungroup()
   }
 
   norm_df

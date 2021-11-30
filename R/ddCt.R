@@ -24,7 +24,8 @@ ddCt <- function(df, cntrl_cond) {
       dplyr::filter(stringr::str_detect(df$sample, "-RT|- RT") == FALSE)
   ddct <- ddct %>%
       dplyr::group_by(sample) %>%
-      dplyr::mutate(dd_Ct = d_Ct - ddct$d_Ct[ddct$sample == cntrl_cond])
+      dplyr::mutate(dd_Ct = d_Ct - ddct$d_Ct[ddct$sample == cntrl_cond]) %>%
+      dplyr::ungroup()
 
   ddct
 
